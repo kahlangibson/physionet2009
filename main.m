@@ -46,3 +46,23 @@ for i=1:4
     disp("MACD");
     display(macd(i)/15);
 end
+
+% % testing files
+% testfiles = 'testingdata/BP_*.mat';
+% % directory list
+% d = dir(testfiles);
+% macdcorrect = 0;
+% A = [true, true, false, true, false, false, false, false, true, true];
+% B = [false, true, true, false, false, false, true, false, true, false, false, false, false, true, false, false, true, true, false, false, false, true, true, true, true, false, false, false, false, false, false, false, false, true, false, false, false, true, true, false];
+% 
+% for i=1:length(d) % for each dataset
+%     load(strcat('testingdata/',d(i).name));
+%     macdresult = runmacd(DAT);
+%     if macdresult
+%         disp([d(i).name,'  H']);
+%     else
+%         
+%         disp([d(i).name,'  C']);
+%     end
+% end
+
