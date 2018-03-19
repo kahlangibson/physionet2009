@@ -8,10 +8,41 @@
 %
 
 % training files
-trainfiles = 'trainingdata/*.mat';
+trainfiles = 'trainingdata/BP_*.mat';
 % directory list
 d = dir(trainfiles);
-for i=1:1%length(d) % for each dataset
-    load(strcat('trainingdata/',d(i).name);
+% number correct in training
+macd = [0,0,0,0];
+for i=1:length(d) % for each dataset
+    load(strcat('trainingdata/',d(i).name));
+    macdresult = runmacd(DAT);
     % determine if AHE occurs
+    if contains(d(i).name,'H1')
+        % AHE = true;
+        if macdresult
+            macd(1) = macd(1) + 1;
+        end
+    elseif contains(d(i).name,'H2')
+        %AHE = true;
+        if macdresult
+            macd(2) = macd(2) + 1;
+        end
+    elseif contains(d(i).name,'C1')
+        %AHE = false;
+        if ~macdresult
+            macd(3) = macd(3) + 1;
+        end
+    elseif contains(d(i).name,'C2')
+        %AHE = false;
+        if ~macdresult
+            macd(4) = macd(4) + 1;
+        end
+    end
+end
+type = ["H1","H2","C1","C2"];
+disp("% accuracy on training data sets");
+for i=1:4
+    disp(type(i));
+    disp("MACD");
+    display(macd(i)/15);
 end
