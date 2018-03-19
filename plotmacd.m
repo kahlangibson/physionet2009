@@ -1,4 +1,4 @@
-function plotmacd(inputArg1,inputArg2)
+function plotmacd(DAT)
 %PLOTMACD Creates macd plot
 clf;
 ema12 = tsmovavg(DAT(:,1).', 'e', 12);

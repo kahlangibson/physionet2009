@@ -1,4 +1,3 @@
-import plotmacd.m
 % ELEC 422 - PhysioNet challenge 2009
 % Author: Kahlan Gibson
 % March 7, 2018
@@ -12,6 +11,7 @@ import plotmacd.m
 trainfiles = 'trainingdata/*.mat';
 % directory list
 d = dir(trainfiles);
-for i=1:length(trainfiles) % for each dataset
-    
+for i=1:1%length(d) % for each dataset
+    load(strcat('trainingdata/',d(i).name);
+    % determine if AHE occurs
 end
