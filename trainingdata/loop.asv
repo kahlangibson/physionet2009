@@ -1,0 +1,9 @@
+DirList = dir(fullfile('BP_*.mat'));
+Data = cell(1, length(DirList));
+x = [];
+for k = 1:length(DirList)
+  [a,b] = is_ahe(fullfile(DirList(k).name));
+  if (a == "down" && b < 80)
+      
+  x =[x;[DirList(k).name,a,b]];
+end
