@@ -64,21 +64,52 @@ for i=1:4
 end
 
 % % testing files
-% testfiles = 'testingdata/BP_*.mat';
-% % directory list
+% disp("SCORE A");
+% testfiles = 'testingdata/BP_A1_*.mat';
+% % % directory list
 % d = dir(testfiles);
 % macdcorrect = 0;
+% arimacorrect = 0;
 % A = [true, true, false, true, false, false, false, false, true, true];
-% B = [false, true, true, false, false, false, true, false, true, false, false, false, false, true, false, false, true, true, false, false, false, true, true, true, true, false, false, false, false, false, false, false, false, true, false, false, false, true, true, false];
-% 
-% for i=1:length(d) % for each dataset
+% for i=1:length(d)
 %     load(strcat('testingdata/',d(i).name));
 %     macdresult = runmacd(DAT);
-%     if macdresult
-%         disp([d(i).name,'  H']);
-%     else
-%         
-%         disp([d(i).name,'  C']);
+%     arimaresult = runarima(DAT);
+%     C = textscan(d(i).name,'BP_A1_%d.mat');
+%     if macdresult == A(C{1})
+%         macdcorrect = macdcorrect + 1;
+%     end
+%     if arimaresult == A(C{1})
+%         arimacorrect = arimacorrect + 1;
 %     end
 % end
+% X = ['MACD ',num2str(macdcorrect),'/10'];
+% disp(X);
+% X = ['ARIMA ',num2str(arimacorrect),'/10'];
+% disp(X);
+
+% disp("SCORE B");
+% testfiles = 'testingdata/BP_B1_*.mat';
+% % % directory list
+% d = dir(testfiles);
+% macdcorrect = 0;
+% arimacorrect = 0;
+% B = [false, true, true, false, false, false, true, false, true, false, false, false, false, true, false, false, true, true, false, false, false, true, true, true, true, false, false, false, false, false, false, false, false, true, false, false, false, true, true, false];
+% for i=1:length(d)
+%     load(strcat('testingdata/',d(i).name));
+%     macdresult = runmacd(DAT);
+%     arimaresult = runarima(DAT);
+%     C = textscan(d(i).name,'BP_B1_%d.mat');
+%     if macdresult == B(C{1})
+%         macdcorrect = macdcorrect + 1;
+%     end
+%     if arimaresult == B(C{1})
+%         arimacorrect = arimacorrect + 1;
+%     end
+% end
+% X = ['MACD ',num2str(macdcorrect),'/40'];
+% disp(X);
+% X = ['ARIMA ',num2str(arimacorrect),'/40'];
+% disp(X);
+
 
