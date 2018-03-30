@@ -13,29 +13,43 @@ trainfiles = 'trainingdata/BP_*.mat';
 d = dir(trainfiles);
 % number correct in training
 macd = [0,0,0,0];
+arima = [0,0,0,0];
 for i=1:length(d) % for each dataset
     load(strcat('trainingdata/',d(i).name));
     macdresult = runmacd(DAT);
+    arimaresult = runarima(DAT);
     % determine if AHE occurs
     if contains(d(i).name,'H1')
         % AHE = true;
         if macdresult
             macd(1) = macd(1) + 1;
         end
+        if arimaresult
+            arima(1) = arima(1) + 1;
+        end
     elseif contains(d(i).name,'H2')
         %AHE = true;
         if macdresult
             macd(2) = macd(2) + 1;
+        end
+        if arimaresult
+            arima(2) = arima(2) + 1;
         end
     elseif contains(d(i).name,'C1')
         %AHE = false;
         if ~macdresult
             macd(3) = macd(3) + 1;
         end
+        if ~arimaresult
+            arima(3) = arima(3) + 1;
+        end
     elseif contains(d(i).name,'C2')
         %AHE = false;
         if ~macdresult
             macd(4) = macd(4) + 1;
+        end
+        if ~arimaresult
+            arima(4) = arima(4) + 1;
         end
     end
 end
@@ -45,6 +59,8 @@ for i=1:4
     disp(type(i));
     disp("MACD");
     display(macd(i)/15);
+    disp("ARIMA");
+    display(arima(i)/15);
 end
 
 % % testing files
