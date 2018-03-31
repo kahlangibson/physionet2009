@@ -87,7 +87,7 @@ end
 % disp(X);
 % X = ['ARIMA ',num2str(arimacorrect),'/10'];
 % disp(X);
-
+% 
 % disp("SCORE B");
 % testfiles = 'testingdata/BP_B1_*.mat';
 % % % directory list

@@ -5,8 +5,8 @@ function c = runarima(DAT)
 EstMdl = estimate(arima(2,2,2),DAT(1:600,2));
 rng default;
 Y = simulate(EstMdl,60,'NumPaths',1000,'Y0',DAT(1:600,2));
-lower = prctile(Y,2.5,2);
-upper = prctile(Y,97.5,2);
+lower = prctile(Y,9,2);
+upper = prctile(Y,91,2);
 mn = mean(Y,2);
 
 c = false;
@@ -25,7 +25,7 @@ end
 % h1 = plot(n+1:n+60,lower,'r:','LineWidth',2);
 % plot(n+1:n+60,upper,'r:','LineWidth',2)
 % h2 = plot(n+1:n+60,mn,'k','LineWidth',2);
-% legend([h1 h2],'95% Interval','Simulation Mean','Location','NorthWest')
+% legend([h1 h2],'82% Interval','Simulation Mean','Location','NorthWest')
 % title('ABP Trend Forecast');
 % hold off
 end
